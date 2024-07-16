@@ -8,6 +8,10 @@
 *.so
 *.dylib
 
+.env
+
+.idea
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -19,4 +23,7 @@
 
 # Go workspace file
 go.work
-go.work.sum
+
+config/git_config/.ssh
+config/git_config
+config/git_config/.gitconfig
