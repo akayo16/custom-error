@@ -9,8 +9,17 @@ import (
 )
 
 // Result: http.StatusCode From net/http
-func ConvertGRPCErrorCodeToHTTPStatusCode(e error) (int, *CustomError) {
+func ConvertGRPCErrorToStatusStruct(e error) *status.Status {
 
+	st, ok := status.FromError(e)
+	if !ok {
+		return nil
+	}
+
+	return st
+}
+
+func ConvertGRPCStatusCodeToHTTPStatusCode(e error) (int, *CustomError) {
 	st, ok := status.FromError(e)
 	if !ok {
 		return http.StatusInternalServerError, NewCustomError(
