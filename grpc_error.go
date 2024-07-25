@@ -9,7 +9,7 @@ import (
 )
 
 // Result: http.StatusCode From net/http
-func convertGRPCErrorCodeToHTTPStatusCode(e error) (int, *CustomError) {
+func ConvertGRPCErrorCodeToHTTPStatusCode(e error) (int, *CustomError) {
 
 	st, ok := status.FromError(e)
 	if !ok {
