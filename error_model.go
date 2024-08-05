@@ -12,6 +12,7 @@ type CustomError struct {
 	message          string
 	developerMessage string
 	code             string
+	op               string
 }
 
 type LevelError string

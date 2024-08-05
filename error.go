@@ -100,6 +100,7 @@ func ShortCreateCustomError(err error, op, bodyErr string) *CustomError {
 		fmt.Sprintf("%s", bodyErr),
 		fmt.Sprintf("%s: %s", op, bodyErr),
 		strconv.Itoa(http.StatusInternalServerError),
+		op,
 		Error,
 	)
 }
@@ -111,11 +112,12 @@ func ShortCreateCustomErrorWithLevelLogging(err error, op, bodyErr string, level
 		fmt.Sprintf("%s", bodyErr),
 		fmt.Sprintf("%s: %s", op, bodyErr),
 		strconv.Itoa(http.StatusInternalServerError),
+		op,
 		levelError,
 	)
 }
 
-func NewCustomError(err error, message, developerMessage, code string) *CustomError {
+func NewCustomError(err error, message, developerMessage, code, op string) *CustomError {
 
 	writeToLogs(developerMessage, Error, nil)
 
@@ -124,16 +126,18 @@ func NewCustomError(err error, message, developerMessage, code string) *CustomEr
 		message:          message,
 		developerMessage: developerMessage,
 		code:             code,
+		op:               op,
 	}
 }
 
-func NewCustomErrorWithLevelLogging(err error, message, developerMessage, code string, levelError LevelError) *CustomError {
+func NewCustomErrorWithLevelLogging(err error, message, developerMessage, code, op string, levelError LevelError) *CustomError {
 
 	customErr := &CustomError{
 		err:              err,
 		message:          message,
 		developerMessage: developerMessage,
 		code:             code,
+		op:               op,
 	}
 
 	writeToLogs(developerMessage, levelError, customErr)

@@ -27,6 +27,7 @@ func ConvertGRPCStatusCodeToHTTPStatusCode(e error) (int, *CustomError) {
 			"Error Parse StatusCode From gRPC Response",
 			fmt.Sprintf("Error Parse StatusCode From gRPC Response: %v", e),
 			strconv.Itoa(http.StatusInternalServerError),
+			"custom-error.ConvertGRPCStatusCodeToHTTPStatusCode",
 		)
 	}
 
