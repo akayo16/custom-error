@@ -34,6 +34,7 @@ type CustomErrorInterface interface {
 	DeveloperMessage() string
 	Code() string
 	Error() error
+	Op() string
 	Marshal() []byte
 	As(err error) bool
 	SupplementDevMessage(devMessage string) *CustomError

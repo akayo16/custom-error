@@ -17,6 +17,8 @@ func (e *CustomError) Code() string { return e.code }
 
 func (e *CustomError) Error() error { return e.err }
 
+func (e *CustomError) Op() string { return e.op }
+
 func (e *CustomError) Marshal() []byte {
 	// TODO add error handling
 	marshal, _ := json.Marshal(e)
