@@ -147,6 +147,16 @@ func NewCustomErrorWithLevelLogging(err error, message, developerMessage, code, 
 	return customErr
 }
 
+func NewCustomErrorWithoutLogging(err error, message, developerMessage, code, op string) *CustomError {
+	return &CustomError{
+		err:              err,
+		message:          message,
+		developerMessage: developerMessage,
+		code:             code,
+		op:               op,
+	}
+}
+
 func writeToLogs(message string, levelError LevelError, err *CustomError) {
 	switch levelError {
 	case Info:
